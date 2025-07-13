@@ -1,4 +1,5 @@
 import pickle
+import os
 
 import pandas as pd
 
@@ -33,4 +34,5 @@ def fun_model_churn_predict():
         return Response('{}',status=200,minetype = 'application/json') # pq ta indicando que vem de uma aplicacao json
 
 if __name__ == '__main__':
-    app.run('0.0.0.0')
+    port = os.environ.get('PORT',5000)
+    app.run(host='0.0.0.0',port=port)
