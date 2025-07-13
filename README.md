@@ -1,65 +1,90 @@
-# 💼 Churn Prediction API – Previsão de Abandono de Clientes
+# 💼 Churn Prediction API – Customer Attrition Forecast
 
-Este projeto é uma API de Machine Learning construída com **FastAPI** que realiza a previsão de **churn** (abandono de clientes) com base em dados de uma instituição financeira fictícia.
+This project aims to study the deployment of a Machine Learning API built with **Flask**, capable of predicting **churn** (customer attrition) based on data from a fictional financial institution. The motivation includes:
+
+- 🚀 Making the model accessible. Training a good model is not enough, it needs to be deployed so other people, systems or applications can use it. For example, a credit risk model is only useful if integrated into a banking app, website or API;
+  
+- 🔁 Automating and scaling the solution. With deployment, the model can process thousands of requests automatically, 24/7, without manual intervention, enabling real-world usage;
+   
+- 🔄 Integrating with real systems. APIs expose the model so it can be consumed by:
+  - Web/mobile frontends;
+  - CRMs and ERPs;
+  - Data pipelines in production;
+  - Bots, services or automated workflows.
+
+- 📊 Monitoring performance in real time. After deployment, it’s possible to track prediction quality, latency, errors and even retrain using real-world data. Without this, models may become outdated unnoticed;
+
+- 📚 Learning real engineering practices:
+  - Modular code structure;
+  - Working in production environments;
+  - Resolving dependency issues, paths, permissions;
+  - Logging, versioning and software best practices.
 
 ---
 
-## 🧠 Descrição do Problema
+## 🧠 Problem Description
 
-Seu objetivo é prever o **churn** (abandono de clientes) em um banco de dados fictício de uma instituição financeira.
+The goal is to predict **customer churn** in a fictional financial institution.
 
-Para isso, são fornecidos dois datasets:
+Two datasets are provided:
 
-- `Abandono_clientes.csv`: 10.000 registros e 13 colunas. A coluna `Exited` indica se o cliente abandonou o banco (1) ou não (0).
-- `Abandono_teste.csv`: 1.000 registros e 12 colunas (sem a coluna `Exited`).
+- `Abandono_clientes.csv`: 10,000 rows and 13 columns. The `Exited` column indicates if the customer left the bank (1) or not (0).
+- `Abandono_teste.csv`: 1,000 rows and 12 columns (without the `Exited` column).
 
-A missão é construir um pipeline de Machine Learning capaz de prever a coluna `Exited` com base nos dados fornecidos.
+The mission is to build a Machine Learning pipeline to predict the `Exited` column based on the provided data.
+
+Studying churn is important because it enables data-driven strategic decisions, helps understand why customers are leaving, and guides improvements in products, pricing, service, UX, etc.
+
+It’s also an analytical feedback mechanism to enhance business strategy and personalize retention actions with predictive models, such as:
+- Offering targeted discounts;
+- Triggering proactive interventions;
+- Prioritizing high-risk, high-value clients.
 
 ---
 
-## 🧰 Tecnologias utilizadas
+## 🧰 Technologies Used
 
-- Python 3.9
-- FastAPI
+- Python 3.12.9
+- Flask
 - Scikit-learn
 - XGBoost
 - Gunicorn
-- Render (deploy gratuito)
-- Pickle (para salvar e carregar modelos)
+- Render (free cloud deployment)
+- Pickle (to save and load models)
 
 ---
 
-## 📁 Estrutura do Projeto
+## 📁 Project Structure
 
 ```
 .
 ├── api/
-│   ├── handler.py                 # Endpoints da API
+│   ├── handler.py                 # API endpoints
 │   └── model_churn/
 │       ├── __init__.py
-│       └── model_churn.py         # Classe com lógica de carregamento e predição
+│       └── model_churn.py         # Class with logic for loading and predicting
 ├── data/
-│   ├── Abandono_clientes.csv      # Base de treino
-│   └── Abandono_teste.csv         # Base de teste (sem rótulo)
+│   ├── Abandono_clientes.csv      # Training data
+│   └── Abandono_teste.csv         # Test data (unlabeled)
 ├── model/
-│   ├── model_randomForest.pkl     # Modelo treinado (opcional)
-│   └── model_xgboost.pkl          # Modelo em produção
-├── requirements.txt               # Dependências
-├── Procfile                       # Arquivo de deploy no Render
+│   ├── model_randomForest.pkl     # Optional trained model
+│   └── model_xgboost.pkl          # Production model
+├── requirements.txt               # Dependencies
+├── Procfile                       # Deployment config for Render
 ```
 
 ---
 
-## 🔧 Como rodar localmente
+## 🔧 Running Locally
 
-1. **Clone o repositório:**
+1. **Clone the repository:**
 
 ```bash
 git clone https://github.com/fernandonast/churn-prediction-api.git
 cd churn-prediction-api
 ```
 
-2. **Crie um ambiente virtual (opcional):**
+2. **Create a virtual environment (optional):**
 
 ```bash
 python -m venv venv
@@ -67,69 +92,78 @@ source venv/bin/activate  # Linux/macOS
 venv\Scripts\activate   # Windows
 ```
 
-3. **Instale as dependências:**
+3. **Install the dependencies:**
 
 ```bash
 pip install -r requirements.txt
 ```
 
-4. **Execute a API:**
+4. **Run the API locally:**
 
 ```bash
-uvicorn api.handler:app --reload
-```
-
-5. Acesse a documentação interativa (Swagger):
-
-```
-http://localhost:8000/docs
+python api/handler.py
 ```
 
 ---
 
-## 🌐 API em produção
+## 🌐 Production API
 
-A aplicação está hospedada gratuitamente no Render:
+This application is deployed for free on **Render**, a modern cloud platform for hosting web apps, APIs, and services with continuous deployment from GitHub. You can use the endpoint below:
 
-🔗 **https://churn-prediction-api.onrender.com**
+🔗 **https://deploy-ds.onrender.com/model_churn/predict**
+
+Render supports Flask apps with Gunicorn and offers a free plan suitable for learning projects, prototypes, and small APIs.
 
 ---
 
-## 🧪 Exemplo de uso (via Postman ou cURL)
+## 🧪 Example Request (Postman or cURL)
 
 ### `POST /predict`
 
-#### Corpo da requisição (exemplo):
+#### Example JSON body:
 
 ```json
 {
-  "CreditScore": 600,
-  "Geography": "France",
-  "Gender": "Male",
-  "Age": 40,
-  "Tenure": 3,
-  "Balance": 60000.0,
-  "NumOfProducts": 2,
+  "CustomerId": 15699309,
+  "Surname": "Gerasimov",
+  "CreditScore": 510,
+  "Geography": "Spain",
+  "Gender": "Female",
+  "Age": 38,
+  "Tenure": 4,
+  "Balance": 0,
+  "NumOfProducts": 1,
   "HasCrCard": 1,
-  "IsActiveMember": 1,
-  "EstimatedSalary": 50000.0
+  "IsActiveMember": 0,
+  "EstimatedSalary": 118913.53
 }
 ```
 
-#### Resposta esperada:
+#### Expected Response:
 
 ```json
 {
-  "churn": true,
-  "probabilidade": 0.81
+  "CustomerId": 15699309,
+  "Surname": "Gerasimov",
+  "CreditScore": 510,
+  "Geography": "Spain",
+  "Gender": "Female",
+  "Age": 38,
+  "Tenure": 4,
+  "Balance": 0,
+  "NumOfProducts": 1,
+  "HasCrCard": 1,
+  "IsActiveMember": 0,
+  "EstimatedSalary": 118913.53,
+  "predictedValues": 0
 }
 ```
 
-> ⚠️ O formato da entrada pode variar conforme o modelo utilizado.
+> ⚠️ The response includes the original data plus a `predictedValues` field indicating churn prediction (`1` for churn, `0` for retention).
 
 ---
 
-## 🧑 Autor
+## 🧑 Author
 
 - **Fernando Nast**
 - [LinkedIn](https://www.linkedin.com/in/fernandonast)
@@ -137,7 +171,7 @@ A aplicação está hospedada gratuitamente no Render:
 
 ---
 
-## 📌 Observações
+## 📌 Notes
 
-- Projeto desenvolvido com fins educacionais para praticar deploy de modelos de Machine Learning como APIs RESTful.
-- O modelo em produção é baseado no algoritmo **XGBoost**.
+- Project developed for educational purposes to practice deploying Machine Learning models as RESTful APIs.
+- The production model is based on the **XGBoost** algorithm.
