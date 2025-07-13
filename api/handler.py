@@ -5,7 +5,7 @@ import sys
 import pandas as pd
 
 from flask                   import Flask, request,Response
-from model_churn.model_churn import Model_Churn
+from api.model_churn.model_churn import Model_Churn
 
 # Adiciona o diretório atual (`api/`) ao path
 sys.path.append(os.path.dirname(__file__))
