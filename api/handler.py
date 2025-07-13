@@ -11,7 +11,9 @@ from api.model_churn.model_churn import Model_Churn
 sys.path.append(os.path.dirname(__file__))
 
 # Carregando modelo
-model = pickle.load(open('/model/model_xgboost.pkl','rb'))
+# model = pickle.load(open('/model/model_xgboost.pkl','rb'))
+model_path = os.path.join(os.path.dirname(__file__), 'model', 'model_xgboost.pkl')
+model = pickle.load(open(model_path,'rb'))
 
 app = Flask(__name__)
 
