@@ -12,7 +12,8 @@ sys.path.append(os.path.dirname(__file__))
 
 # Carregando modelo
 # model = pickle.load(open('/model/model_xgboost.pkl','rb'))
-model_path = os.path.join(os.path.dirname(__file__), 'model', 'model_xgboost.pkl')
+model_path = os.path.join(os.path.dirname(__file__), '..','model', 'model_xgboost.pkl')
+model_path = os.path.abspath(model_path)  # garante caminho absoluto correto
 model = pickle.load(open(model_path,'rb'))
 
 app = Flask(__name__)
