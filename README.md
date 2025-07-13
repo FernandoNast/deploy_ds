@@ -103,7 +103,9 @@ pip install -r requirements.txt
 ```bash
 python api/handler.py
 ```
-
+> ⚠️ You'll need to change some paths or at least revise them to run locally. These include paths to find `handler.py` or even the model. 
+> 
+> Generalizing it is in the next steps.
 ---
 
 ## 🌐 Production API
