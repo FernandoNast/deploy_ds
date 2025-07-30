@@ -1,20 +1,20 @@
-# 💼 Churn Prediction API – Customer Attrition Forecast
+# Churn Prediction API – Customer Attrition Forecast
 
 This project aims to study the deployment of a Machine Learning API built with **Flask**, capable of predicting **churn** (customer attrition) based on data from a fictional financial institution. The motivation includes:
 
-- 🚀 Making the model accessible. Training a good model is not enough, it needs to be deployed so other people, systems or applications can use it. For example, a credit risk model is only useful if integrated into a banking app, website or API;
+- Making the model accessible. Training a good model is not enough, it needs to be deployed so other people, systems or applications can use it. For example, a credit risk model is only useful if integrated into a banking app, website or API;
   
-- 🔁 Automating and scaling the solution. With deployment, the model can process thousands of requests automatically, 24/7, without manual intervention, enabling real-world usage;
+- Automating and scaling the solution. With deployment, the model can process thousands of requests automatically, 24/7, without manual intervention, enabling real-world usage;
    
-- 🔄 Integrating with real systems. APIs expose the model so it can be consumed by:
+- Integrating with real systems. APIs expose the model so it can be consumed by:
   - Web/mobile frontends;
   - CRMs and ERPs;
   - Data pipelines in production;
   - Bots, services or automated workflows.
 
-- 📊 Monitoring performance in real time. After deployment, it’s possible to track prediction quality, latency, errors and even retrain using real-world data. Without this, models may become outdated unnoticed;
+- Monitoring performance in real time. After deployment, it’s possible to track prediction quality, latency, errors and even retrain using real-world data. Without this, models may become outdated unnoticed;
 
-- 📚 Learning real engineering practices:
+- Learning real engineering practices:
   - Modular code structure;
   - Working in production environments;
   - Resolving dependency issues, paths, permissions;
@@ -22,7 +22,7 @@ This project aims to study the deployment of a Machine Learning API built with *
 
 ---
 
-## 🧠 Problem Description
+##  Problem Description
 
 The goal is to predict **customer churn** in a fictional financial institution.
 
@@ -42,7 +42,7 @@ It’s also an analytical feedback mechanism to enhance business strategy and pe
 
 ---
 
-## 🧰 Technologies Used
+## Technologies Used
 
 - Python 3.12.9
 - Flask
@@ -54,7 +54,7 @@ It’s also an analytical feedback mechanism to enhance business strategy and pe
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 .
@@ -75,7 +75,7 @@ It’s also an analytical feedback mechanism to enhance business strategy and pe
 
 ---
 
-## 🔧 Running Locally
+## Running Locally
 
 1. **Clone the repository:**
 
@@ -118,7 +118,7 @@ Render supports Flask apps with Gunicorn and offers a free plan suitable for lea
 
 ---
 
-## 🧪 Example Request (Postman or cURL)
+## Example Request (Postman or cURL)
 
 ### `POST /predict`
 
@@ -165,7 +165,7 @@ Render supports Flask apps with Gunicorn and offers a free plan suitable for lea
 
 ---
 
-## 🧑 Author
+## Author
 
 - **Fernando Nast**
 - [LinkedIn](https://www.linkedin.com/in/fernandonast)
