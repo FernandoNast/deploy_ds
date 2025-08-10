@@ -124,41 +124,105 @@ Render supports Flask apps with Gunicorn and offers a free plan suitable for lea
 
 #### Example JSON body:
 
+Considering the initial problem of input by spreadsheet, below is an example:
+
 ```json
-{
-  "CustomerId": 15699309,
-  "Surname": "Gerasimov",
-  "CreditScore": 510,
-  "Geography": "Spain",
-  "Gender": "Female",
-  "Age": 38,
-  "Tenure": 4,
-  "Balance": 0,
-  "NumOfProducts": 1,
-  "HasCrCard": 1,
-  "IsActiveMember": 0,
-  "EstimatedSalary": 118913.53
-}
+[
+  {
+    "CustomerId": 15795593,
+    "Surname": "Chuang",
+    "CreditScore": 651,
+    "Geography": "Germany",
+    "Gender": "Male",
+    "Age": 24,
+    "Tenure": 5,
+    "Balance": 158484.85,
+    "NumOfProducts": 1,
+    "HasCrCard": 1,
+    "IsActiveMember": 1,
+    "EstimatedSalary": 161234.9
+  },
+    {
+    "CustomerId": 15634602,
+    "Surname": "Hargrave",
+    "CreditScore": 619,
+    "Geography": "France",
+    "Gender": "Female",
+    "Age": 42,
+    "Tenure": 2,
+    "Balance": 0,
+    "NumOfProducts": 1,
+    "HasCrCard": 1,
+    "IsActiveMember": 1,
+    "EstimatedSalary": 101348.88
+  },
+    {
+    "CustomerId": 15699309,
+    "Surname": "Gerasimov",
+    "CreditScore": 510,
+    "Geography": "Spain",
+    "Gender": "Female",
+    "Age": 38,
+    "Tenure": 4,
+    "Balance": 0,
+    "NumOfProducts": 1,
+    "HasCrCard": 1,
+    "IsActiveMember": 0,
+    "EstimatedSalary": 118913.53
+  }
+]
 ```
 
 #### Expected Response:
 
 ```json
-{
-  "CustomerId": 15699309,
-  "Surname": "Gerasimov",
-  "CreditScore": 510,
-  "Geography": "Spain",
-  "Gender": "Female",
-  "Age": 38,
-  "Tenure": 4,
-  "Balance": 0,
-  "NumOfProducts": 1,
-  "HasCrCard": 1,
-  "IsActiveMember": 0,
-  "EstimatedSalary": 118913.53,
-  "predictedValues": 0
-}
+[
+  {
+      "CustomerId": 15795593,
+      "Surname": "Chuang",
+      "CreditScore": 651,
+      "Geography": "Germany",
+      "Gender": "Male",
+      "Age": 24,
+      "Tenure": 5,
+      "Balance": 158484.85,
+      "NumOfProducts": 1,
+      "HasCrCard": 1,
+      "IsActiveMember": 1,
+      "EstimatedSalary": 161234.9,
+      "predictedValues": 0
+  },
+  {
+      "CustomerId": 15634602,
+      "Surname": "Hargrave",
+      "CreditScore": 619,
+      "Geography": "France",
+      "Gender": "Female",
+      "Age": 42,
+      "Tenure": 2,
+      "Balance": 0.0,
+      "NumOfProducts": 1,
+      "HasCrCard": 1,
+      "IsActiveMember": 1,
+      "EstimatedSalary": 101348.88,
+      "predictedValues": 1
+  },
+  {
+      "CustomerId": 15699309,
+      "Surname": "Gerasimov",
+      "CreditScore": 510,
+      "Geography": "Spain",
+      "Gender": "Female",
+      "Age": 38,
+      "Tenure": 4,
+      "Balance": 0.0,
+      "NumOfProducts": 1,
+      "HasCrCard": 1,
+      "IsActiveMember": 0,
+      "EstimatedSalary": 118913.53,
+      "predictedValues": 0
+  }
+]
 ```
 
 > ⚠️ The response includes the original data plus a `predictedValues` field indicating churn prediction (`1` for churn, `0` for retention).
