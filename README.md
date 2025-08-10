@@ -1,6 +1,6 @@
 # Churn Prediction API – Customer Attrition Forecast
 
-This project aims to study the deployment of a Machine Learning API built with **Flask**, capable of predicting **churn** (customer attrition) based on data from a fictional financial institution. The motivation includes:
+This project aims the deployment of a Machine Learning API built with **Flask**, capable of predicting **churn** (customer attrition) based on data from a financial institution. The motivation includes:
 
 - Making the model accessible. Training a good model is not enough, it needs to be deployed so other people, systems or applications can use it. For example, a credit risk model is only useful if integrated into a banking app, website or API;
   
@@ -24,7 +24,7 @@ This project aims to study the deployment of a Machine Learning API built with *
 
 ##  Problem Description
 
-The goal is to predict **customer churn** in a fictional financial institution.
+The goal is to predict **customers churn** in a financial institution.
 
 Two datasets are provided:
 
